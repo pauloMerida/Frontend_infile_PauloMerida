@@ -1,0 +1,20 @@
+/* Asegura que el formulario esté centrado en la pantalla */
+.container {
+    height: 100vh;
+  }
+  
+  /* Agrega un estilo para la tarjeta de login */
+  .card {
+    border-radius: 12px;
+  }
+  
+  /* Estilo del texto del error */
+  .text-danger small {
+    font-size: 12px;
+  }
+  
+  /* Efecto de carga del botón */
+  button[disabled] {
+    opacity: 0.7;
+  }
+  
