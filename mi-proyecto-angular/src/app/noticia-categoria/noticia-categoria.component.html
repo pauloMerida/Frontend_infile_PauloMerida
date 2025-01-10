@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="home">Noticias Infile</a>
+    <a class="navbar-brand" href="noticia-categoria" (click)="guardarCategoria(1)">| Deportes    </a>
+    <a class="navbar-brand" href="noticia-categoria" (click)="guardarCategoria(2)">| Economia    </a>
+    <a class="navbar-brand" href="noticia-categoria" (click)="guardarCategoria(3)">| Comunidad    |</a>
+    <div class="ml-auto">
+      <button class="btn btn-primary" (click)="regresar()">Volver al Login</button>
+    </div>
+  </nav>
+  
+  <div class="container mt-5">
+    <div *ngIf="noticiasRelacionadas.length > 0">
+      <h3>Noticias de la Categoría</h3>
+      <div *ngFor="let relatedNoticia of noticiasRelacionadas" class="card mb-3">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <!-- Imagen clickeable para ir a la noticia seleccionada -->
+            <img [src]="relatedNoticia.fotoNoticia" class="img-fluid rounded-start" alt="Foto de la noticia relacionada" (click)="irANoticia(relatedNoticia.id_noticia)" style="cursor: pointer;" />
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">{{ relatedNoticia.titulo }}</h5>
+              <p class="card-text">{{ obtenerResumen(relatedNoticia.cuerpo) }}</p>
+              <p class="card-text"><small class="text-muted">{{ relatedNoticia.fechaPublicacion | date: 'dd/MM/yyyy' }}</small></p>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

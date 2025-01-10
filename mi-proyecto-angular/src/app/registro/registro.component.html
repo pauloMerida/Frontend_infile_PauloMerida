@@ -1,0 +1,103 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Noticias Infile       </a>
+    <div class="ml-auto">
+      <button class="btn btn-primary" (click)="regresar()">Volver al Login</button>
+    </div>
+  </nav>
+  
+  <div class="container mt-5">
+    <div class="card shadow">
+      <div class="card-header text-center bg-primary text-white">
+        <h2>Formulario de Registro</h2>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="registroForm" (ngSubmit)="registrarCliente()">
+          <div class="form-group">
+            <label for="nombres">Nombres</label>
+            <input
+              type="text"
+              id="nombres"
+              class="form-control"
+              formControlName="nombres"
+              placeholder="Ingrese sus nombres"
+            />
+            <div *ngIf="registroForm.get('nombres')?.invalid && registroForm.get('nombres')?.touched" class="text-danger">
+              Este campo es obligatorio.
+            </div>
+          </div>
+  
+          <div class="form-group">
+            <label for="apellidos">Apellidos</label>
+            <input
+              type="text"
+              id="apellidos"
+              class="form-control"
+              formControlName="apellidos"
+              placeholder="Ingrese sus apellidos"
+            />
+            <div *ngIf="registroForm.get('apellidos')?.invalid && registroForm.get('apellidos')?.touched" class="text-danger">
+              Este campo es obligatorio.
+            </div>
+          </div>
+  
+          <div class="form-group">
+            <label for="edad">Edad</label>
+            <input
+              type="number"
+              id="edad"
+              class="form-control"
+              formControlName="edad"
+              placeholder="Ingrese su edad"
+            />
+            <div *ngIf="registroForm.get('edad')?.invalid && registroForm.get('edad')?.touched" class="text-danger">
+              Este campo es obligatorio y debe ser un número válido.
+            </div>
+          </div>
+  
+          <div class="form-group">
+            <label for="fechaNacimiento">Fecha de Nacimiento</label>
+            <input
+              type="date"
+              id="fechaNacimiento"
+              class="form-control"
+              formControlName="fechaNacimiento"
+            />
+            <div *ngIf="registroForm.get('fechaNacimiento')?.invalid && registroForm.get('fechaNacimiento')?.touched" class="text-danger">
+              Este campo es obligatorio.
+            </div>
+          </div>
+  
+          <div class="form-group">
+            <label for="correo">Correo Electrónico</label>
+            <input
+              type="email"
+              id="correo"
+              class="form-control"
+              formControlName="correo"
+              placeholder="Ingrese su correo electrónico"
+            />
+            <div *ngIf="registroForm.get('correo')?.invalid && registroForm.get('correo')?.touched" class="text-danger">
+              Debe ser un correo válido.
+            </div>
+          </div>
+  
+          <div class="form-group">
+            <label for="password">Contraseña</label>
+            <input
+              type="password"
+              id="password"
+              class="form-control"
+              formControlName="password"
+              placeholder="Ingrese su contraseña"
+            />
+            <div *ngIf="registroForm.get('password')?.invalid && registroForm.get('password')?.touched" class="text-danger">
+              La contraseña debe tener al menos 8 caracteres.
+            </div>
+          </div>
+  
+          <button type="submit" class="btn btn-success btn-block" [disabled]="registroForm.invalid">Registrarse</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  

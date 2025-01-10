@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="home">  Home    </a>
+    <a class="navbar-brand" href="noticia-categoria" (click)="guardarCategoria(1)">| Deportes    </a>
+    <a class="navbar-brand" href="noticia-categoria" (click)="guardarCategoria(2)">| Economia    </a>
+    <a class="navbar-brand" href="noticia-categoria" (click)="guardarCategoria(3)">| Comunidad    |</a>
+    <div class="ml-auto">
+        <button class="btn btn-primary" (click)="regresar()">Volver al Login</button>
+      </div>
+  </nav>  
+<h1>Noticia</h1>
+  
+  <div class="container mt-5">
+    <div *ngIf="noticia" class="card">
+      <img [src]="imagenNoticia" class="card-img-top" alt="Foto de la noticia" />
+  
+      <div class="card-body">
+        <h2 class="card-title">{{ noticia.titulo }}</h2>
+        <p class="card-text">{{ noticia.cuerpo }}</p>
+  
+        <div class="d-flex justify-content-between">
+          <div class="d-flex align-items-center">
+            <img [src]="imagenAutor" class="rounded-circle" alt="Foto del autor" style="width: 40px; height: 40px; margin-right: 10px" />
+            <span>Por {{ noticia.nombre }}</span>
+          </div>
+          <small class="text-muted">{{ noticia.fechaPublicacion | date: 'dd/MM/yyyy' }}</small>
+        </div>
+  
+        <div class="mt-4">
+          <span class="badge bg-secondary">{{ noticia.categoria }}</span>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Noticias relacionadas -->
+    <div *ngIf="noticiasRelacionadas.length > 0" class="mt-5">
+      <h3>Noticias Relacionadas</h3>
+      <div *ngFor="let relatedNoticia of noticiasRelacionadas" class="card mb-3">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <!-- Imagen clickeable para ir a la noticia seleccionada -->
+            <img [src]="relatedNoticia.fotoNoticia" class="img-fluid rounded-start" alt="Foto de la noticia relacionada" (click)="irANoticia(relatedNoticia.id_noticia)" style="cursor: pointer;" />
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">{{ relatedNoticia.titulo }}</h5>
+              <p class="card-text">{{ obtenerResumen(relatedNoticia.cuerpo) }}</p>
+              <p class="card-text"><small class="text-muted">{{ relatedNoticia.fechaPublicacion | date: 'dd/MM/yyyy' }}</small></p>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

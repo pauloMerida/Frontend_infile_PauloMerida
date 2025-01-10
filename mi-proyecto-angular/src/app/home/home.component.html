@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Noticias Infile       </a>
+    <a class="navbar-brand" href="noticia-categoria" (click)="guardarCategoria(1)">| Deportes    </a>
+    <a class="navbar-brand" href="noticia-categoria" (click)="guardarCategoria(2)">| Economia    </a>
+    <a class="navbar-brand" href="noticia-categoria" (click)="guardarCategoria(3)">| Comunidad    |</a>
+    <div class="ml-auto">
+      <button class="btn btn-primary" (click)="regresar()">Volver al Login</button>
+    </div>
+  </nav>
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Últimas Noticias</h2>
+    <div class="row">
+      <div *ngFor="let noticia of noticias" class="col-md-4 mb-4">
+        <div class="card h-100 shadow">
+          <img
+            [src]="noticia.fotoNoticia"
+            class="card-img-top"
+            alt="Imagen de la noticia"
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{ noticia.titulo }}</h5>
+            <p class="card-text">
+              {{ noticia.cuerpo.split(' ').slice(0, 25).join(' ') }}...
+            </p>
+            <p class="text-muted">
+              Publicado el {{ noticia.fechaPublicacion }} en {{ noticia.categoria }}
+            </p>
+          </div>
+          <div class="card-footer text-center">
+            <button
+              class="btn btn-primary"
+              (click)="irANoticia(noticia.idCategoria, noticia.id_noticia)"
+            >
+              Ir a noticia
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

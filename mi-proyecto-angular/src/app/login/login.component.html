@@ -41,7 +41,9 @@
         >
           {{ isLoading ? 'Cargando...' : 'Iniciar Sesión' }}
         </button>
-  
+        <br>
+        <br>
+        <button class="btn btn-secondary" (click)="irARegistro()">Crear cuenta</button>
         <div *ngIf="errorMessage" class="mt-3 text-danger text-center">
           <small>{{ errorMessage }}</small>
         </div>

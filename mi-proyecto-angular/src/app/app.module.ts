@@ -10,11 +10,19 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './home/home.component';
+import { RegistroComponent } from './registro/registro.component';
+import { DetalleComponent } from './detalle/detalle.component';
+import { NoticiaCategoriaComponent } from './noticia-categoria/noticia-categoria.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent,
+    RegistroComponent,
+    DetalleComponent,
+    NoticiaCategoriaComponent
   ],
   imports: [
     BrowserModule,

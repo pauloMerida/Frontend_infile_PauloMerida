@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,7 +12,7 @@ export class LoginComponent {
   isLoading = false;
   errorMessage = '';
 
-  constructor(private fb: FormBuilder, private http: HttpClient) {
+  constructor(private fb: FormBuilder, private http: HttpClient,private router: Router) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: [
@@ -20,7 +20,7 @@ export class LoginComponent {
         [
           Validators.required,
           Validators.minLength(8),
-          Validators.pattern(/^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[A-Za-z0-9!@#$%^&*]{8,}$/)
+          
         ]
       ]
     });
@@ -33,7 +33,9 @@ export class LoginComponent {
   get password() {
     return this.loginForm.get('password');
   }
-
+  irARegistro(): void {
+    this.router.navigate(['/registro']);
+  }  
   onSubmit(): void {
     if (this.loginForm.valid) {
       this.isLoading = true;
@@ -49,7 +51,10 @@ export class LoginComponent {
           (response) => {
             this.isLoading = false;
             console.log('Login successful', response);
-            // Redirigir a la página principal o almacenar el token si la autenticación es exitosa
+            if (response==true){
+              this.router.navigate(['/home']);
+            }
+            
           },
           (error) => {
             this.isLoading = false;
